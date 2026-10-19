@@ -23,17 +23,18 @@ export class MemoryService extends ResourceService {
 export class ApiResourceService extends ResourceService {
   #ruta; #normalizar;
   constructor(ruta, normalizar = (x) => x) { super(); this.#ruta = ruta; this.#normalizar = normalizar; }
-  async list() { const resultado = await clienteHttp.solicitar(this.#ruta); const filas = Array.isArray(resultado) ? resultado : resultado?.eventos || resultado?.fichas || resultado?.datos || []; return filas.map(this.#normalizar); }
+  async list(parametros = {}) { const resultado = await clienteHttp.solicitar(this.#ruta + this.#consulta(parametros)); const filas = Array.isArray(resultado) ? resultado : resultado?.eventos || resultado?.fichas || resultado?.datos || []; return filas.map(this.#normalizar); }
   async get(id) { return this.#normalizar(await clienteHttp.solicitar(`${this.#ruta}/${id}`)); }
   async create(datos) { return this.#normalizar(await clienteHttp.solicitar(this.#ruta, { metodo: 'POST', datos })); }
   async update(id, datos) { return this.#normalizar(await clienteHttp.solicitar(`${this.#ruta}/${id}`, { metodo: 'PUT', datos })); }
   async remove(id) { return this.#normalizar(await clienteHttp.solicitar(`${this.#ruta}/${id}`, { metodo: 'DELETE' })); }
+  #consulta(parametros) { const query = new URLSearchParams(Object.entries(parametros).filter(([,valor]) => valor !== '' && valor !== null && valor !== undefined)); const texto = query.toString(); return texto ? `?${texto}` : ''; }
 }
 
 class FichaApiService extends ResourceService {
   #rutaDe(idEvento) { return `/eventos/${encodeURIComponent(idEvento)}/ficha`; }
   async list(idEvento) { try { return [await this.get(idEvento)]; } catch (error) { if (error.estado === 409 || error.estado === 404) return []; throw error; } }
-  async get(idEvento) { const ficha = await clienteHttp.solicitar(this.#rutaDe(idEvento)); return { ...ficha, id: ficha.id ?? ficha.idFichaTecnica ?? ficha.id_ficha_tecnica, idEvento: ficha.idEvento ?? ficha.id_evento, tematica: ficha.tematica, franjaHoraria: ficha.franjaHoraria ?? ficha.franja_horaria, cantidadInvitados: ficha.cantidadInvitados ?? ficha.cantidad_invitados, observaciones: ficha.observaciones, servicios: ficha.servicios ?? [] }; }
+  async get(idEvento) { const ficha = await clienteHttp.solicitar(this.#rutaDe(idEvento)); return { ...ficha, id: ficha.id ?? ficha.idFichaTecnica ?? ficha.id_ficha_tecnica, idEvento: ficha.idEvento ?? ficha.id_evento ?? idEvento, tematica: ficha.tematica, franjaHoraria: ficha.franjaHoraria ?? ficha.franja_horaria, cantidadInvitados: ficha.cantidadInvitados ?? ficha.cantidad_invitados, observaciones: ficha.observaciones, servicios: (ficha.servicios ?? []).map((item) => ({...item, idServicio: item.idServicio ?? item.id_servicio, nombreServicio: item.nombreServicio ?? item.nombre_servicio, cantidadRequerida: item.cantidadRequerida ?? item.cantidad_requerida})) }; }
   async create(idEvento, datos) { return this.getAfterWrite(idEvento, 'POST', datos); }
   async update(idEvento, datos) { return this.getAfterWrite(idEvento, 'PUT', datos); }
   async remove(idEvento) { return clienteHttp.solicitar(this.#rutaDe(idEvento), { metodo: 'DELETE' }); }
