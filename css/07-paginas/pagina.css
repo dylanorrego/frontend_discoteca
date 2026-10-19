@@ -1,0 +1,3 @@
+/* Ajustes de página: las vistas específicas usan la plantilla y organismos comunes. */
+.p-inicio__hero{position:relative;overflow:hidden}.p-acceso__formulario{width:min(100%,28rem);margin-inline:auto}.p-eventos__metricas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.875rem}
+@media(max-width:720px){.p-eventos__metricas{grid-template-columns:repeat(2,minmax(0,1fr))}}

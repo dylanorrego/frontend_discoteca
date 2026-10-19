@@ -1,0 +1,14 @@
+# Archivos locales y secretos
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+node_modules/
+coverage/
+*.log
+# Capturas generadas localmente; se conserva la guía
+/docs/capturas/*.png
+/docs/capturas/*.jpg

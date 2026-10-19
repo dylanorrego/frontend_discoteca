@@ -1,0 +1,2 @@
+/* Moléculas: campo y ayuda/error se agrupan sin redefinir sus átomos. */
+.m-campo{display:grid;gap:.35rem}.m-campo__etiqueta{font-size:.72rem;font-weight:600}.m-campo__ayuda{color:var(--muted);font-size:.65rem}.m-campo__error{min-height:.9rem;color:var(--rojo);font-size:.65rem}.m-busqueda{display:flex;align-items:center;gap:.55rem;min-width:min(100%,12rem)}

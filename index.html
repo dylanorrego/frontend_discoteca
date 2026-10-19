@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="Plataforma de gestión operativa de la discoteca NOX.">
+  <title>NOX · Gestión de discoteca</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <a class="salto" href="#contenido">Saltar al contenido</a>
+  <div class="marco" id="aplicacion">
+    <aside class="barra-lateral" id="barra-lateral" aria-label="Navegación principal"></aside>
+    <main id="contenido" class="contenido" tabindex="-1">
+      <header class="barra-superior" id="barra-superior"></header>
+      <section id="vista" aria-live="polite" aria-busy="false"></section>
+    </main>
+  </div>
+  <div class="avisos" id="avisos" aria-live="polite" aria-atomic="true"></div>
+  <dialog id="dialogo" aria-labelledby="dialogo-titulo">
+    <div class="dialogo-cabecera"><h2 id="dialogo-titulo"></h2><button class="boton-icono" type="button" data-cerrar aria-label="Cerrar">×</button></div>
+    <div id="dialogo-cuerpo"></div>
+  </dialog>
+</body>
+</html>

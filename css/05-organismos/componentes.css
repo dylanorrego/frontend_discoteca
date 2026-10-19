@@ -1,0 +1,2 @@
+/* Organismos: componentes compuestos de panel, tabla adaptable y diálogo. */
+.o-panel{background:var(--panel);border:1px solid var(--linea);border-radius:var(--radio)}.o-panel__cabecera{display:flex;align-items:center;justify-content:space-between;padding:1.15rem;border-bottom:1px solid var(--linea)}.o-tabla{width:100%;border-collapse:collapse}.o-dialogo{border:1px solid var(--linea);border-radius:var(--radio);background:var(--panel);color:var(--texto)}
