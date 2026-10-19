@@ -62,4 +62,11 @@ docs/
 
 ## Entrega y publicación
 
-`docs/capturas/README.md` contiene la matriz de capturas exigida para 360 y 1366 px. El proyecto es estático y apto para GitHub Pages, Netlify o Vercel. Antes de publicar con integración API, cambia `apiBaseUrl` a HTTPS y configura CORS; la API y el JWT no deben exponerse con secretos de desarrollo. Para el artefacto final, crea el tag `v1.0-evidencia3`, publica el sitio y adjunta el ZIP del repositorio.
+Este repositorio puede publicarse como `frontend_discoteca` en la cuenta propietaria del backend. El flujo de GitHub Actions de `.github/workflows/pages.yml` publica el sitio estático en GitHub Pages cuando se envía `main`.
+
+1. En GitHub crea un repositorio vacío llamado `frontend_discoteca` (sin README, licencia ni `.gitignore` iniciales).
+2. En este directorio configura como `origin` la URL HTTPS de ese repositorio y ejecuta `git push -u origin main` y `git push origin v1.0-evidencia3`. Git Credential Manager solicitará iniciar sesión en el navegador si hace falta; no pongas contraseña ni token en la URL.
+3. En el repositorio abre **Settings → Pages** y selecciona **GitHub Actions** como fuente. Espera a que termine el workflow.
+4. La URL pública esperada será `https://<propietario>.github.io/frontend_discoteca/`. Si se conecta la API, configura `apiBaseUrl` con HTTPS y agrega el origen público a CORS del backend.
+
+Guardar capturas PNG sin datos personales reales en `docs/capturas/`, especialmente dos pantallas API y dos dummy a 360 y 1366 px. Antes de publicar con integración API, el backend debe estar accesible por HTTPS y CORS configurado; GitHub Pages solo aloja el frontend estático.

@@ -13,7 +13,7 @@ El README del proyecto docente establece la separación frontend/backend, módul
 5. **Operación dummy** — roles, inventario/compras/proveedores, ingreso/VIP, personal/agenda/reservas, clientes/ventas/puntos, reportes/notificaciones.
 6. **Acceso de demostración** — login, registro, recuperación y restablecimiento navegables, sin autenticación real ni envío de secretos.
 7. **Calidad de interfaz** — validación en línea, teclado, privacidad, respuesta móvil/escritorio y estados vacíos/errores.
-8. **Evidencia y entrega** — matriz HU-ruta-fuente, bocetos, capturas 360/1366, README, repositorio/commit, etiqueta y despliegue público.
+8. **Evidencia y entrega** — matriz HU-ruta-fuente, bocetos, capturas 360/1366, README, repositorio/commit, etiqueta y despliegue público. El tag local está creado; el repositorio remoto, capturas autorizadas y Pages requieren acceso a la cuenta.
 
 ## Plan de pruebas de aceptación
 
